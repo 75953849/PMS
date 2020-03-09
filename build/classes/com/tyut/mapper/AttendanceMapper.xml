@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tyut.mapper.AttendanceMapper" >
+  <resultMap id="BaseResultMap" type="com.tyut.po.Attendance" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="emp_id" property="empId" jdbcType="INTEGER" />
+    <result column="dep_id" property="depId" jdbcType="INTEGER" />
+    <result column="am_record" property="amRecord" jdbcType="TIMESTAMP" />
+    <result column="am_record2" property="amRecord2" jdbcType="TIMESTAMP" />
+    <result column="am_state" property="amState" jdbcType="VARCHAR" />
+    <result column="pm_record" property="pmRecord" jdbcType="TIMESTAMP" />
+    <result column="pm_record2" property="pmRecord2" jdbcType="TIMESTAMP" />
+    <result column="pm_state" property="pmState" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, emp_id, dep_id, am_record, am_record2, am_state, pm_record, pm_record2, pm_state
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tyut.po.AttendanceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from attendance
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from attendance
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.tyut.po.AttendanceExample" >
+    delete from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.tyut.po.Attendance" >
+    insert into attendance (id, emp_id, dep_id, 
+      am_record, am_record2, am_state, 
+      pm_record, pm_record2, pm_state
+      )
+    values (#{id,jdbcType=INTEGER}, #{empId,jdbcType=INTEGER}, #{depId,jdbcType=INTEGER}, 
+      #{amRecord,jdbcType=TIMESTAMP}, #{amRecord2,jdbcType=TIMESTAMP}, #{amState,jdbcType=VARCHAR}, 
+      #{pmRecord,jdbcType=TIMESTAMP}, #{pmRecord2,jdbcType=TIMESTAMP}, #{pmState,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tyut.po.Attendance" >
+    insert into attendance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="empId != null" >
+        emp_id,
+      </if>
+      <if test="depId != null" >
+        dep_id,
+      </if>
+      <if test="amRecord != null" >
+        am_record,
+      </if>
+      <if test="amRecord2 != null" >
+        am_record2,
+      </if>
+      <if test="amState != null" >
+        am_state,
+      </if>
+      <if test="pmRecord != null" >
+        pm_record,
+      </if>
+      <if test="pmRecord2 != null" >
+        pm_record2,
+      </if>
+      <if test="pmState != null" >
+        pm_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empId != null" >
+        #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null" >
+        #{depId,jdbcType=INTEGER},
+      </if>
+      <if test="amRecord != null" >
+        #{amRecord,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amRecord2 != null" >
+        #{amRecord2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amState != null" >
+        #{amState,jdbcType=VARCHAR},
+      </if>
+      <if test="pmRecord != null" >
+        #{pmRecord,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pmRecord2 != null" >
+        #{pmRecord2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pmState != null" >
+        #{pmState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.tyut.po.AttendanceExample" resultType="java.lang.Integer" >
+    select count(*) from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update attendance
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.empId != null" >
+        emp_id = #{record.empId,jdbcType=INTEGER},
+      </if>
+      <if test="record.depId != null" >
+        dep_id = #{record.depId,jdbcType=INTEGER},
+      </if>
+      <if test="record.amRecord != null" >
+        am_record = #{record.amRecord,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amRecord2 != null" >
+        am_record2 = #{record.amRecord2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.amState != null" >
+        am_state = #{record.amState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pmRecord != null" >
+        pm_record = #{record.pmRecord,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pmRecord2 != null" >
+        pm_record2 = #{record.pmRecord2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.pmState != null" >
+        pm_state = #{record.pmState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update attendance
+    set id = #{record.id,jdbcType=INTEGER},
+      emp_id = #{record.empId,jdbcType=INTEGER},
+      dep_id = #{record.depId,jdbcType=INTEGER},
+      am_record = #{record.amRecord,jdbcType=TIMESTAMP},
+      am_record2 = #{record.amRecord2,jdbcType=TIMESTAMP},
+      am_state = #{record.amState,jdbcType=VARCHAR},
+      pm_record = #{record.pmRecord,jdbcType=TIMESTAMP},
+      pm_record2 = #{record.pmRecord2,jdbcType=TIMESTAMP},
+      pm_state = #{record.pmState,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tyut.po.Attendance" >
+    update attendance
+    <set >
+      <if test="empId != null" >
+        emp_id = #{empId,jdbcType=INTEGER},
+      </if>
+      <if test="depId != null" >
+        dep_id = #{depId,jdbcType=INTEGER},
+      </if>
+      <if test="amRecord != null" >
+        am_record = #{amRecord,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amRecord2 != null" >
+        am_record2 = #{amRecord2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="amState != null" >
+        am_state = #{amState,jdbcType=VARCHAR},
+      </if>
+      <if test="pmRecord != null" >
+        pm_record = #{pmRecord,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pmRecord2 != null" >
+        pm_record2 = #{pmRecord2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pmState != null" >
+        pm_state = #{pmState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tyut.po.Attendance" >
+    update attendance
+    set emp_id = #{empId,jdbcType=INTEGER},
+      dep_id = #{depId,jdbcType=INTEGER},
+      am_record = #{amRecord,jdbcType=TIMESTAMP},
+      am_record2 = #{amRecord2,jdbcType=TIMESTAMP},
+      am_state = #{amState,jdbcType=VARCHAR},
+      pm_record = #{pmRecord,jdbcType=TIMESTAMP},
+      pm_record2 = #{pmRecord2,jdbcType=TIMESTAMP},
+      pm_state = #{pmState,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+
+
+
+
+
+<!--	begin  -->
+<select id="selectByExampleMappingPage" resultMap="AttWithDepAndRoleResult" parameterType="com.tyut.po.vo.AttendanceVo" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from attendance
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    limit #{jump},#{rows}
+  </select>
+  
+  <resultMap type="Attendance" id="AttWithDepAndRoleResult">
+		<id property="id" column="id"/>
+		<result property="empId" column="emp_id"/>
+		<result property="depId" column="dep_id"/>
+		<result property="amRecord" column="am_record"/>
+		<result property="amRecord2" column="am_record2"/>
+		<result property="amState" column="am_state"/>
+		<result property="pmRecord" column="pm_record"/>
+		<result property="pmRecord2" column="pm_record2"/>
+		<result property="pmState" column="pm_state"/>
+		<association property="emp" column="emp_id" javaType="Employee" select="com.tyut.mapper.EmployeeMapper.selectByPrimaryKey">	
+		</association>
+		<association property="dep" column="dep_id" javaType="Department" select="com.tyut.mapper.DepartmentMapper.selectByPrimaryKey">
+					
+		</association>
+
+		
+	</resultMap> 
+  
+
+
+
+
+
+</mapper>
+
