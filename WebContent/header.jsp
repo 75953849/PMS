@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="header col-md-12 col-xs-12 col-sm-12">
-	    		<img alt="" src="image/logo2222.png" style="height:85px; ">
+	    		<img alt="" src="image/2020.png" style="height:85px; ">
 	    	</div>
             <div class="col-md-2 col-xs-2 col-sm-2">
                 <div class="panel-group table-responsive" role="tablist">
@@ -138,86 +138,7 @@
                             </ul>
                         </div>
                     </div>
-               		<div class="panel panel-primary leftMenu">
-                      <!--   利用data-target指定要折叠的分组列表 -->
-                        <div class="panel-heading" id="collapseListGroupHeading4" data-toggle="collapse" data-target="#collapseListGroup4" role="tab" >
-                            <h4 class="panel-title">
-                               员工加班管理
-                                <span class="glyphicon glyphicon-menu-up right"></span>
-                            </h4>
-                        </div>
-                        <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                        <div id="collapseListGroup4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading4">
-                            <ul class="list-group">
-                              <li class="list-group-item">
-                                <!-- 利用data-target指定URL -->
-                                <button class="menu-item-left" data-target="extrawork/extraworkList.html">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>部门加班查询
-                                </button>
-                              </li>
-                              <li class="list-group-item">
-                                <button class="menu-item-left" data-target="extrawork/extraworkList.html">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>个人加班查询
-                                </button>
-                              </li>
-                              <li class="list-group-item">
-                               <button class="menu-item-left" data-target="extrawork/addExtrawork.html">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>新增加班信息
-                                </button>
-                              </li>
-                            </ul>
-                        </div>
-                    </div> 
-                    
-                    
-            
-                
-                	<div class="panel panel-primary leftMenu">
-                        <!-- 利用data-target指定要折叠的分组列表 -->
-              
-                        <div class="panel-heading" id="collapseListGroupHeading5" data-toggle="collapse" data-target="#collapseListGroup5" role="tab" >
-                            <h4 class="panel-title">
-                              职工薪资管理
-                                <span class="glyphicon glyphicon-menu-up right"></span>
-                            </h4>
-                        </div>
-                        <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                        <div id="collapseListGroup5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading5">
-                            <ul class="list-group">
-                              <li class="list-group-item">
-                                <!-- 利用data-target指定URL -->
-                                <button class="menu-item-left" data-target="salaryListPage">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>薪资汇总发放
-                                </button>
-                              </li>
-                               <li class="list-group-item">
-                               <button class="menu-item-left" data-target="toaddSalary">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>添加薪资信息
-                                </button>
-                              </li>
-                            </ul>
-                        </div>
-                    </div>
-                  <div class="panel panel-primary leftMenu">
-                        <!-- 利用data-target指定要折叠的分组列表 -->
-                        <div class="panel-heading" id="collapseListGroupHeading6" data-toggle="collapse" data-target="#collapseListGroup6" role="tab" >
-             				<h4 class="panel-title">
-             假期情况管理
-                                <span class="glyphicon glyphicon-menu-up right"></span>
-                            </h4>
-                        </div>
-                        <!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
-                        <div id="collapseListGroup6" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseListGroupHeading6">
-                            <ul class="list-group">
-                              <li class="list-group-item">
-                                <!-- 利用data-target指定URL -->
-                                <button class="menu-item-left" data-target="attendace/applyHoliday.html">
-                                    <span class="glyphicon glyphicon-triangle-right"></span>假期申请
-                                </button>
-                              </li>
-                            </ul>
-                        </div>
-                    </div> 
+               		
                    
                 </div>
             </div>
